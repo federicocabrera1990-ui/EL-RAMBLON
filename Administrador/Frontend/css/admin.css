@@ -1,0 +1,345 @@
+body{
+   padding: 0;
+   margin: 0;
+}
+
+/*barra de navegación*/
+
+.barra_menú {
+    width: 100%;
+    height: 15vh;
+    background-color: #ffffff;
+ 
+    
+}
+
+.contenedor_menú {
+    background-color: #ffffff;
+    height: 100%;
+    margin-left: 30px;
+    margin-right: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+}
+
+.texto1{
+    display: flex;
+    flex: 1;
+    gap: 30px;
+
+    color: #000000;
+
+    text-decoration: none;
+    font-size: 24px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+
+
+.vacio{
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+
+    color: #000000;
+
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.texto2{
+    display: flex;
+    justify-content: flex-end;
+
+    color: #0F2C59;
+
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: bold;
+
+    background-color: #bed0ff;
+    border-radius: 20px;
+    padding-right: 14px;
+    padding-left: 14px;
+}
+
+/*primera seccion*/
+.general {
+    background-color: #0F2C59;
+    width: 100%;
+    height: 55vh;
+    display: flex;
+    align-items: center;
+}
+
+/*3 cajas con datos*/
+.general-datos {
+    background-color: #0F2C59;
+    height: 45vh;
+    width: 35%;
+    margin: 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dato1, .dato2, .dato3 {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    border-radius: 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%; 
+    padding: 0 20px; 
+    box-sizing: border-box;
+}
+
+.dato1 { margin-bottom: 5px; }
+.dato2 { margin: 11px; }
+.dato3 { margin-top: 5px; }
+
+.dato-caja{
+       margin: 0 0 6px 0;
+    font-size: 13px;
+    color: #888888;
+    
+
+}
+
+.dato-valor{
+      margin: 0;
+    font-size: 26px;
+    font-weight: bold;
+    color: #111111;
+
+}
+
+/*seccion de marcado de mesas*/
+.seccion-mesas {
+    background-color: #ffffff;
+    width: 65%;
+    height: 45vh;
+    margin: 40px;
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.mesa {
+    border-radius: 8px;
+    background-color: #000000;
+}
+
+/*segunda seccion*/
+
+.general2{
+    background-color: #0F2C59;
+    width: 100%;
+    height: 30vh;
+
+    display: flex;
+    justify-content: center;
+}
+
+/*3 botones con acciones del admin*/
+.acciones{
+    background-color: #ffffff;
+    width: 96%;
+    margin-bottom: 40px;
+    border-radius: 30px;
+
+   
+
+}
+
+.texto-acciones {
+    display: flex;
+    margin-left: 40px;
+    
+
+    color: #000000;
+
+    text-decoration: none;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: bold;
+
+}
+.general-acciones{
+    display: flex;
+
+    width: 100%;
+    height: 19vh;
+}
+/*las 3 acciones*/
+
+.accion1, .accion2, .accion3{
+
+
+    background-color: #0F2C59;
+    width: 30%;
+    height: 12vh;
+    margin: 30px;
+    border-radius: 30px;
+    position: relative;
+
+}
+
+.enlace{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    text-decoration: none;
+    color: #ffffff;
+}
+
+/* cuando la pantalla mide menos de 900px se adaptan las cajas*/
+
+@media (max-width: 900px) {
+
+    .texto1{
+        display: flex;
+        flex: 2;
+        gap: 30px;
+
+        color: #000000;
+
+        text-decoration: none;
+        font-size: 19px;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+/*las 3 cajas de la derecha se pasan para arriba y el panel de mesas se adapta para que entren las 18 mesas*/
+
+    .general {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .general-datos {
+        order: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        height: auto;
+        margin: 20px 0 0 0;
+    }
+
+    .dato1, .dato2, .dato3 {
+        width: 90%;
+        height: 12vh;
+        margin: 6px 0;
+    }
+
+    .seccion-mesas {
+        order: 2;
+        width: 90%;
+        height: 60vw;
+        margin: 20px 0;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+
+    .seccion-mesas {
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        width: 85%;
+        height: 50vw;
+    }
+
+/*los textos de los botones se acomodan al achicarse el tamaño de la pantalla*/
+    .accion1, .accion2, .accion3{
+        background-color: #0F2C59;
+        width: 30%;
+        height: 12vh;
+        margin: 8px;
+        border-radius: 30px;
+        position: relative;
+        text-align: center;
+
+    }
+}
+
+
+
+/* cuando la pantalla mide menos de 600px vuelven a adaptar las cajas*/
+
+@media (max-width: 600px) {
+    .texto1{
+        display: flex;
+        flex: 2;
+        gap: 30px;
+
+        color: #000000;
+
+        text-decoration: none;
+        font-size: 19px;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+/*las 3 cajas de la derecha se pasan para arriba y el panel de mesas se adapta para que entren las 18 mesas*/
+
+    .general {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .general-datos {
+        order: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        height: auto;
+        margin: 20px 0 0 0;
+    }
+
+    .dato1, .dato2, .dato3 {
+        width: 90%;
+        height: 12vh;
+        margin: 6px 0;
+    }
+
+    .seccion-mesas {
+        order: 2;
+        width: 90%;
+        height: 60vw;
+        margin: 20px 0;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+/*los textos de los botones se acomodan al achicarse el tamaño de la pantalla*/
+    .accion1, .accion2, .accion3{
+        background-color: #0F2C59;
+        width: 30%;
+        height: 12vh;
+        margin: 8px;
+        border-radius: 30px;
+        position: relative;
+        text-align: center;
+
+    }
+}

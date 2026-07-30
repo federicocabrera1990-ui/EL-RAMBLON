@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/checkAdmin.js"></script>
+</head>
+<body>
+    <h1>Nuevo Empleado</h1>
+        <form id="f">
+            <label>Nombre</label>
+            <input type="text" name="nombre" required>
+            <label>Apellido</label>
+            <input type="text" name="apellido" required>
+            <label>Telefono</label>
+            <input type="text" name="telefono" required>
+            <label>Email</label>
+            <input type="email" name="email" required>
+            <label>cree una contrasena</label>
+            <input type="password" name="contrasena" required>
+            <label>Rol</label>
+            <select name="rol" required>
+                <option value="admin">admin</option>
+                <option value="mozo">mozo</option>
+                <option value="cocinero">cocinero</option>
+            </select>
+            <input type="submit">
+        </form>
+
+
+    <div id="admin1"></div>
+    <script src="../js/registrarPersonal.js"></script>
+</body>
+</html>

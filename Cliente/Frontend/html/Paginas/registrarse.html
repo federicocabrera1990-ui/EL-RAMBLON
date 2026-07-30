@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/registrarse.css">
+    <title>Registro</title>
+</head>
+<body>
+    
+
+<section>
+
+  <!-- Caja general que centra todo en la pantalla -->
+  <div class="caja-general">
+ 
+    <!-- Tarjeta blanca del formulario -->
+    <div class="panel-registro">
+ 
+      <!-- Icono de persona -->
+      <div class="persona">
+        <img class="icon-lock" src="../../css/img/person.svg" alt="Registro">
+      </div>
+ 
+      <!-- Título -->
+      <h1>Registrarse</h1>
+ 
+    
+      <form id="registrarse">
+        <div class="form-datos">
+            <label>Nombre</label>
+            <input type="text" name="nombre" placeholder="Introduce tu nombre" required>
+        </div>
+
+        <div class="form-datos">
+            <label>Apellido</label>
+            <input type="text" name="apellido" placeholder="Introduce tu apellido" required>
+        </div>
+
+        <div class="form-datos">
+            <label>Teléfono</label>
+            <input type="text" name="telefono" placeholder="Introduce tu teléfono" required>
+        </div>
+
+        <div class="form-datos">
+            <label>Correo Electrónico</label>
+            <input type="text" name="email" placeholder="Introduce tu correo" required>
+        </div>
+
+        <div class="form-datos">
+            <label>Contrasena</label>
+            <input type="password" name="contrasena" placeholder="Introduce tu contrasena" required>
+        </div>
+            <input type="submit" class="btn-acceso">
+        </form>
+ 
+      <!-- Link registro -->
+      <p class="registro-link">
+        <a href="iniciar_sesion.html">¿Ya tienes una cuenta?</a>
+      </p>
+ 
+      <!-- Volver al inicio -->
+      <p class="volver-inicio">
+        Volver a la página principal de <a href="../index.html">El Ramblón</a>
+      </p>
+ 
+    </div>
+  </div>
+ 
+</section>
+
+<div id="asd2"></div>
+<script src="../../js/registrarse.js"></script>
+</body>
+</html>

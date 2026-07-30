@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/registro_interno.css">
+    <title>Registro personal</title>
+</head>
+<body>
+
+
+<section>
+
+  <!-- Caja general que centra todo en la pantalla -->
+  <div class="caja-general">
+ 
+    <!-- Tarjeta blanca del formulario -->
+    <div class="panel-registro">
+ 
+      <!-- Icono del admin -->
+      <div class="admin">
+        <img class="icon-lock" src="../css/img/admin.svg" alt="admin">
+
+      </div>
+ 
+      <!-- Titulo -->
+      <h1>Panel Administrativo</h1>
+ 
+      
+      <!-- tEXTO EXPLICATIVO -->
+      <p class="texto-explicativo1"> Acceso exclusivo para personal de El Ramblón </p>
+ 
+    
+      <form id="g">
+ 
+        <!-- Campo donde va el correo -->
+        <div class="form-datos">
+          <label for="Nombre">Correo Electronico *</label>
+          <input type="email" id="Nombre" name="email" placeholder="Ej: carlos@elramblon.com" required>
+        </div>
+ 
+        <!-- Campo donde va la contrasena -->
+        <div class="form-datos">
+          <label for="password">Codigo de Autorizacion *</label>
+          <input type="password" id="password" name="contrasena" placeholder="Introduce tu contraseña" required>
+        
+        
+      <!-- tEXTO EXPLICATIVO 2 -->
+      <p class="texto-explicativo2"> Codigo numerico de 6 dijitos  </p>
+ 
+        </div>
+ 
+ 
+        <!-- Boton de acceso -->
+        <button type="submit" class="btn-acceso">VERIFICAR CREDENCIALES</button>
+ 
+      </form>
+ 
+ 
+    </div>
+  </div>
+ 
+</section>
+
+
+<div class="mensaje" id="mensaje"></div>
+<script src="../js/ingresar.js"></script>
+</body>
+</html>

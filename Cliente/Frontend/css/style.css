@@ -1,0 +1,153 @@
+body{
+   padding: 0;
+   margin: 0;
+}
+
+/*barra de navegación*/
+
+.barra_menú {
+    width: 100%;
+    height: 15vh;
+    background-color: #0F2C59;
+ 
+    
+}
+
+.contenedor_menú {
+    background-color: #0F2C59;
+    height: 100%;
+    margin-left: 30px;
+    margin-right: 30px;
+
+   display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+
+}
+
+.acciones{
+    display: flex;
+  flex: 1;
+  gap: 30px;
+
+   color: #f2d9d9;
+
+    text-decoration: none;
+     font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.nombre_ramblon{
+    
+    display: flex;
+    justify-content: center;
+    flex: 1;
+
+    color: #f2d9d9;
+
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 32px;
+    margin: 0;
+}
+
+
+.vacio{
+    display: flex;
+    justify-content: flex-end;
+    flex: 0.85;
+
+    color: #f2d9d9;
+
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.iniciar_sesion{
+    display: flex;
+    justify-content: flex-end;
+
+    color: #f2d9d9;
+
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+/*seccion inicial*/
+
+
+.seccion1{
+     display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+ 
+    width: 100%;
+    height: 85vh;
+
+    background-image: url(../css/img/fondo_proyectoUTU.png) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/*caja donde se guarda el titulo*/
+.caja_reserva1{
+ display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 250px;
+
+}
+
+#titulo{
+    font-family: 'Playfair Display', serif; 
+  font-size: 90px;
+  color: #f2f2f2;
+  margin: 0;
+}
+
+#restaurante{
+    font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #f2f2f2;
+  margin: 0 0 30px 0;
+  letter-spacing: 2px;
+}
+
+/*caja donde se guarda el boton de reserva*/
+.caja_reserva2{
+    height: 150px;
+}
+
+#btn_reserva{
+    background-color: #1abc7b; 
+  color: #ffffff;
+  border: none;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+a:hover {
+    color: #666867;
+    text-decoration: underline;
+}
+a {
+    color: #ffffff; 
+    text-decoration: none; 
+    font-weight: bold; 
+}
