@@ -12,5 +12,4 @@ $admin = $log && $_SESSION['rol'] == 'admin';
 
 echo json_encode(["status" => $log, "admin" => $admin]);
 
-
 asdasd
