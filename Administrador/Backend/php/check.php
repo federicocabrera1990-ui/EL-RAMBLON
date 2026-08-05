@@ -11,3 +11,4 @@ $log   = isset($_SESSION['log'], $_SESSION['rol']) && $_SESSION['log'] === true;
 $admin = $log && $_SESSION['rol'] == 'admin';
 
 echo json_encode(["status" => $log, "admin" => $admin]);
+asd
