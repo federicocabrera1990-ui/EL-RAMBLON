@@ -23,11 +23,7 @@ if (trim($_POST['nombre'])=='' || trim($_POST['apellido'])=='' || trim($_POST['t
 // que no puede aparecer en una direccion (espacios, comillas, <, >, etc).
 $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
 
-// Y despues se controla que lo que quedo siga teniendo forma de email. Los dos
-// pasos hacen falta: sanitize solo borra caracteres, no dice si el resultado
-// sirve, asi que algo como "hola" pasaria el sanitize igual. El campo del
-// formulario tampoco alcanza, porque se saltea mandando un POST directo a este
-// archivo sin pasar por la pagina.
+// Y despues se controla que lo que quedo siga teniendo forma de email. 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     echo json_encode(["exito"=>false]);
     exit;
