@@ -27,9 +27,9 @@ form.addEventListener('submit', async (event) => {
         // Los dos niveles de acceso: el admin va al panel completo
         // y el resto del personal (mozo y cocinero) a su propia pagina.
         if (datos.rol === "admin") {
-            location.href = "admin.html";
+            location.href = "admin.php";
         } else {
-            location.href = "Usuario.html";
+            location.href = "Usuario.php";
         }
     })
     // Entra aca si no se pudo hablar con el servidor.

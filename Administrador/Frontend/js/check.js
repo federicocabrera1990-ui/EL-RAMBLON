@@ -1,4 +1,4 @@
-// Control de entrada para las paginas de cualquier empleado (Usuario.html).
+// Control de entrada para las paginas de cualquier empleado (Usuario.php).
 // Le pregunta al php si hay una sesion abierta y, si no la hay, vuelve al login.
 
 fetch("../../Backend/php/check.php")

@@ -5,9 +5,9 @@
 session_start();
 header('Content-Type: application/json; charset=utf-8');
 
-// status: hay alguien del personal logueado (sirve para Usuario.html).
+// status: hay alguien del personal logueado (sirve para Usuario.php).
 $log   = isset($_SESSION['log'], $_SESSION['rol']) && $_SESSION['log'] === true;
-// admin: ademas de estar logueado, su rol es admin (sirve para admin.html).
+// admin: ademas de estar logueado, su rol es admin (sirve para admin.php).
 $admin = $log && $_SESSION['rol'] == 'admin';
 
 echo json_encode(["status" => $log, "admin" => $admin]);

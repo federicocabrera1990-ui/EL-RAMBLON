@@ -1,3 +1,9 @@
+<?php
+// Alta de empleados. Antes de imprimir nada se controla la sesion en el
+// servidor: el true es porque esta pagina es solo para el rol admin.
+require_once __DIR__ . '/../../Backend/php/proteger.php';
+proteger(true);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

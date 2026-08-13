@@ -1,3 +1,9 @@
+<?php
+// Pagina del personal. Antes de imprimir nada se controla la sesion en el
+// servidor: sin el true porque la puede ver cualquier empleado logueado.
+require_once __DIR__ . '/../../Backend/php/proteger.php';
+proteger();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,3 +1,9 @@
+<?php
+// Panel del administrador. Antes de imprimir nada se controla la sesion en el
+// servidor: el true es porque esta pagina es solo para el rol admin.
+require_once __DIR__ . '/../../Backend/php/proteger.php';
+proteger(true);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,7 +96,7 @@
                     </a>
                 </div>
                 <div class="accion2">
-                    <a href="nuevoEmpleado.html" class="enlace">
+                    <a href="nuevoEmpleado.php" class="enlace">
                         <p>Administrar personal</p>
                     </a>
                 </div>

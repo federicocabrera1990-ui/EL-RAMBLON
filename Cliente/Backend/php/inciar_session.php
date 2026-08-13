@@ -12,6 +12,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['cont
     $n = trim($_POST['email']);
     $a = trim($_POST['contrasena']);
 
+    // Lista blanca sobre el email antes de tocar la base. Aca no es lo que
+    // frena una inyeccion (de eso ya se encarga la consulta preparada de
+    // abajo), pero descarta de entrada cualquier cosa que ni siquiera tiene
+    // forma de email, asi no se hace una consulta al pedo.
+    // Se contesta el mismo mensaje que cuando el usuario no existe, para no
+    // darle pistas a alguien que este probando cuentas.
+    // La contrasena a proposito no se valida: tiene que poder llevar simbolos,
+    // y si esta mal el password_verify de abajo la rechaza igual.
+    if (!filter_var($n, FILTER_VALIDATE_EMAIL)) {
+        echo json_encode([
+            'success' => false,
+            'msg' => 'Usuario no encontrado'
+        ]);
+        exit;
+    }
+
     // Busca el usuario por email.
     // El INNER JOIN con cliente hace que solo entren clientes: si el id no esta
     // en la tabla cliente (o sea, es personal), la consulta no devuelve nada.
@@ -44,6 +60,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['cont
             'msg' => 'Usuario no encontrado'
         ]);
     }
+} else {
+    // Si no vino por POST o falto alguno de los campos hay que contestar igual.
+    // Sin este else el php no imprime nada, el res.json() del javascript falla
+    // y el formulario se queda sin mostrar ningun mensaje.
+    echo json_encode([
+        'success' => false,
+        'msg' => 'Faltan datos'
+    ]);
 }
 ?>
 
