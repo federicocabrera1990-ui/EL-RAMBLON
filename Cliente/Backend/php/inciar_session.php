@@ -21,8 +21,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['cont
     // siquiera tiene forma de email, asi no se hace una consulta al pedo.
     // Se contesta el mismo mensaje que cuando el usuario no existe, para no
     // darle pistas a alguien que este probando cuentas.
-    // La contrasena a proposito no se valida: tiene que poder llevar simbolos,
-    // y si esta mal el password_verify de abajo la rechaza igual.
+    // La contrasena a proposito no se filtra ni se valida, y no es un olvido:
+    // fijate en el SELECT de abajo que la consulta busca SOLO por email. La
+    // contrasena nunca entra a una consulta, lo unico que se hace con ella es
+    // pasarla a password_verify, que la compara en memoria contra el hash
+    // guardado. No hay forma de que inyecte SQL desde ahi. Tampoco se imprime
+    // en pantalla en ningun momento, asi que tampoco puede ejecutarse como HTML.
+    // Y filtrarle caracteres seria peor: le sacaria los simbolos que la hacen
+    // fuerte y ademas dejaria afuera a usuarios ya registrados.
     if (!filter_var($n, FILTER_VALIDATE_EMAIL)) {
         echo json_encode([
             'success' => false,

@@ -54,8 +54,29 @@ if (!preg_match('/^[0-9+\s-]{6,20}$/', trim($_POST['telefono']))) {
     exit;
 }
 
-// La contrasena a proposito no lleva lista blanca: tiene que poder llevar
-// simbolos. Ademas no se guarda tal cual, se guarda su hash.
+// La contrasena a proposito NO lleva lista blanca ni sanitize, y no es un olvido:
+//   - No se guarda tal cual, se guarda su hash. password_hash() siempre devuelve
+//     bcrypt, que son 60 caracteres de [A-Za-z0-9./$]. Aunque el usuario escriba
+//     <script> o '; DROP TABLE, al INSERT llega $2y$10$... y nada mas.
+//   - Nunca se imprime en pantalla, asi que tampoco puede ejecutarse como HTML.
+//   - Filtrarle caracteres seria contraproducente: le sacaria justo los simbolos
+//     que la hacen fuerte (P@ss<w>ord quedaria P@ssword).
+// Lo que si se controla es el largo, que es donde hay un problema de verdad.
+
+// Minimo 8 caracteres. Sin esto se puede registrar una cuenta con la clave "1".
+if (mb_strlen($_POST['contrasena']) < 8) {
+    echo json_encode(["exito"=>false]);
+    exit;
+}
+
+// Maximo 72 bytes, que es el limite de bcrypt: de ahi para adelante ignora el
+// resto en silencio. Sin este control, alguien que elige una clave larguisima
+// cree tener mas seguridad de la que realmente tiene. Se mide con strlen y no
+// con mb_strlen porque el limite de bcrypt es en bytes, no en caracteres.
+if (strlen($_POST['contrasena']) > 72) {
+    echo json_encode(["exito"=>false]);
+    exit;
+}
 
 try{
     $nombre   = trim($_POST['nombre']);
