@@ -27,9 +27,16 @@ if (trim($_POST['nombre'])=='' || trim($_POST['apellido'])=='' || trim($_POST['t
     exit;
 }
 
-// Controla que el email tenga forma de email. El type="email" del html no alcanza,
-// porque se saltea mandando un POST directo a este archivo sin pasar por el formulario.
-if (!filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL)) {
+// Primero se limpia el email con FILTER_SANITIZE_EMAIL, que borra todo caracter
+// que no puede aparecer en una direccion (espacios, comillas, <, >, etc).
+$email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+
+// Y despues se controla que lo que quedo siga teniendo forma de email. Los dos
+// pasos hacen falta: sanitize solo borra caracteres, no dice si el resultado
+// sirve, asi que algo como "hola" pasaria el sanitize igual. El type="email"
+// del html tampoco alcanza, porque se saltea mandando un POST directo a este
+// archivo sin pasar por el formulario.
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     echo json_encode(["exito"=>false]);
     exit;
 }
@@ -72,7 +79,7 @@ if (!in_array($_POST['rol'], ['admin','mozo','cocinero'], true)) {
     $n        = trim($_POST['nombre']);
     $apellido = trim($_POST['apellido']);
     $telefono = trim($_POST['telefono']);
-    $email    = trim($_POST['email']);
+    // $email ya viene limpio y validado de arriba, se guarda esa version.
     $rol      = $_POST['rol'];
     // Nunca se guarda la contrasena tal cual: se guarda su hash.
     $a = password_hash($_POST['contrasena'], PASSWORD_DEFAULT);

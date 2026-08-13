@@ -7,13 +7,16 @@ header('Content-Type: application/json; charset=utf-8');
 
 // Solo seguimos si vino por POST y llegaron los dos campos del formulario.
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['contrasena'])) {
-    $n = trim($_POST['email']);
+    // FILTER_SANITIZE_EMAIL borra del email todo caracter que no puede aparecer
+    // en una direccion (espacios, comillas, <, >, etc) antes de usarlo.
+    $n = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
     $a = trim($_POST['contrasena']);
 
-    // Lista blanca sobre el email antes de tocar la base. Aca no es lo que
-    // frena una inyeccion (de eso ya se encarga la consulta preparada de
-    // abajo), pero descarta de entrada cualquier cosa que ni siquiera tiene
-    // forma de email, asi no se hace una consulta al pedo.
+    // Lista blanca sobre el email antes de tocar la base. Hace falta aparte del
+    // sanitize, porque ese solo borra caracteres y no dice si lo que quedo sirve.
+    // Aca no es lo que frena una inyeccion (de eso ya se encarga la consulta
+    // preparada de abajo), pero descarta de entrada cualquier cosa que ni
+    // siquiera tiene forma de email, asi no se hace una consulta al pedo.
     // Se contesta el mismo mensaje que cuando el usuario no existe, para no
     // darle pistas a alguien que este probando cuentas.
     // La contrasena a proposito no se valida: tiene que poder llevar simbolos,
