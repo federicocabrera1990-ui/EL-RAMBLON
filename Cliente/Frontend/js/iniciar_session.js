@@ -27,6 +27,11 @@ const div = document.getElementById('asd'); // donde se muestra el mensaje
         // Si llego hasta aca, el login salio bien.
         div.innerHTML = '<h3>Accedio</h3>';
 
+    })
+    // Entra aca si no se pudo hablar con el servidor.
+    .catch(error => {
+        console.error(error);
+        div.innerHTML = '<h3>Error en la conexion</h3>';
     });
 
  });

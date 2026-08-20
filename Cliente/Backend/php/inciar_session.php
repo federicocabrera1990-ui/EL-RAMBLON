@@ -9,8 +9,33 @@ header('Content-Type: application/json; charset=utf-8');
 
 // Solo seguimos si vino por POST y llegaron los dos campos del formulario.
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['contrasena'])) {
-    $n = trim($_POST['email']);
+    // FILTER_SANITIZE_EMAIL borra del email todo caracter que no puede aparecer
+    // en una direccion (espacios, comillas, <, >, etc) antes de usarlo.
+    $n = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
     $a = trim($_POST['contrasena']);
+
+    // Lista blanca sobre el email antes de tocar la base. Hace falta aparte del
+    // sanitize, porque ese solo borra caracteres y no dice si lo que quedo sirve.
+    // Aca no es lo que frena una inyeccion (de eso ya se encarga la consulta
+    // preparada de abajo), pero descarta de entrada cualquier cosa que ni
+    // siquiera tiene forma de email, asi no se hace una consulta al pedo.
+    // Se contesta el mismo mensaje que cuando el usuario no existe, para no
+    // darle pistas a alguien que este probando cuentas.
+    // La contrasena a proposito no se filtra ni se valida, y no es un olvido:
+    // fijate en el SELECT de abajo que la consulta busca SOLO por email. La
+    // contrasena nunca entra a una consulta, lo unico que se hace con ella es
+    // pasarla a password_verify, que la compara en memoria contra el hash
+    // guardado. No hay forma de que inyecte SQL desde ahi. Tampoco se imprime
+    // en pantalla en ningun momento, asi que tampoco puede ejecutarse como HTML.
+    // Y filtrarle caracteres seria peor: le sacaria los simbolos que la hacen
+    // fuerte y ademas dejaria afuera a usuarios ya registrados.
+    if (!filter_var($n, FILTER_VALIDATE_EMAIL)) {
+        echo json_encode([
+            'success' => false,
+            'msg' => 'Usuario no encontrado'
+        ]);
+        exit;
+    }
 
     // Busca el usuario por email.
     // El INNER JOIN con cliente hace que solo entren clientes: si el id no esta
@@ -44,6 +69,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['cont
             'msg' => 'Usuario no encontrado'
         ]);
     }
+} else {
+    // Si no vino por POST o falto alguno de los campos hay que contestar igual.
+    // Sin este else el php no imprime nada, el res.json() del javascript falla
+    // y el formulario se queda sin mostrar ningun mensaje.
+    echo json_encode([
+        'success' => false,
+        'msg' => 'Faltan datos'
+    ]);
 }
 ?>
 

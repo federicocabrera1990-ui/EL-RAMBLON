@@ -1,6 +1,6 @@
 // Control de entrada para las paginas que son solo del admin
-// (admin.html y nuevoEmpleado.html). Si no es admin, vuelve al login.
-// Ojo: esto es solo para la pantalla. El permiso de verdad lo controla el php.
+// (admin.php y nuevoEmpleado.php). Si no es admin, vuelve al login.
+// esto es solo para la pantalla. El permiso de verdad lo controla el php.
 
 fetch("../../Backend/php/check.php")
     .then(res => res.json())

@@ -1,5 +1,5 @@
 // Maneja el boton de cerrar sesion.
-// Lo usan admin.html y Usuario.html.
+// Lo usan admin.php y Usuario.php.
 
 const salir = document.getElementById('salir');
 
