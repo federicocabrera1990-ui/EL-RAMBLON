@@ -1,14 +1,35 @@
 body{
    padding: 0;
    margin: 0;
+
+    display: grid;
+   grid-template-columns: 2fr 1fr;
+   grid-template-rows: 100px 1fr 100px ;
+
+   min-height: 100vh;
+
+   grid-template-areas: 
+   "header header header"
+   "section section main"
+   "footer footer footer"
+
+   
+
 }
 
 /*barra de navegación*/
 
 .barra_menú {
     width: 100%;
-    height: 15vh;
+   
     background-color: #ffffff;
+
+    padding: 10px;
+display: flex;
+justify-content: space-between ;
+
+    background-color: #0F2C59;
+    grid-area: header;
  
     
 }
@@ -78,6 +99,8 @@ body{
     height: 55vh;
     display: flex;
     align-items: center;
+
+    grid-area: section;
 }
 
 /*3 cajas con datos*/
@@ -153,6 +176,8 @@ body{
 
     display: flex;
     justify-content: center;
+
+    grid-area: footer;
 }
 
 /*3 botones con acciones del admin*/

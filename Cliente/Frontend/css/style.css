@@ -1,21 +1,36 @@
 body{
    padding: 0;
    margin: 0;
+   display: grid;
+   grid-template-columns: 200px 1fr 200px;
+   grid-template-rows: 15vh 1fr ;
+
+   min-height: 100vh;
+
+   grid-template-areas: 
+   "header header header"
+   "section section section"
+
+   
+
 }
 
 /*barra de navegación*/
 
-.barra_menú {
-    width: 100%;
-    height: 15vh;
+.header{
+   padding: 10px;
+display: flex;
+justify-content: space-between ;
+
     background-color: #0F2C59;
- 
+    grid-area: header;
+
     
 }
 
 .contenedor_menú {
     background-color: #0F2C59;
-    height: 100%;
+    width: 100%;
     margin-left: 30px;
     margin-right: 30px;
 
@@ -85,6 +100,9 @@ body{
 
 
 .seccion1{
+
+    grid-area: section;
+
      display: flex;
   align-items: center;
   justify-content: center;
@@ -94,7 +112,7 @@ body{
     width: 100%;
     height: 85vh;
 
-    background-image: url(../css/img/fondo_proyectoUTU.png) ;
+    background-image: url(img/fondo.png) ;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -105,24 +123,28 @@ body{
  display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 250px;
+  margin-top: 100px;
+  gap: 50px;
 
 }
 
 #titulo{
-    font-family: 'Playfair Display', serif; 
+         font-family: "Changa One";
+          text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   font-size: 90px;
   color: #f2f2f2;
   margin: 0;
 }
 
 #restaurante{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inria Serif', serif;
   font-size: 28px;
   font-weight: 400;
   color: #f2f2f2;
   margin: 0 0 30px 0;
   letter-spacing: 2px;
+
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 /*caja donde se guarda el boton de reserva*/
